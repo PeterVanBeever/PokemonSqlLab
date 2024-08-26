@@ -1,0 +1,57 @@
+# What are all the types of pokemon that a pokemon can have?
+select * from types;
+
+id | name     |
++----+----------+
+|  1 | Normal   |
+|  2 | Water    |
+|  3 | Grass    |
+|  4 | Rock     |
+|  5 | Fire     |
+|  6 | Ground   |
+|  7 | Poison   |
+|  8 | Bug      |
+|  9 | Electric |
+| 10 | Dragon   |
+| 11 | Steel    |
+| 12 | Dark     |
+| 13 | Fighting |
+| 14 | Psychic  |
+| 15 | Ghost    |
+| 16 | Fairy    |
+| 17 | Ice      |
+| 18 | Flying   |
+
+# What is the name of the pokemon with id 45?
+select * from pokemons where id = 45;
++----+-------+--------------+----------------+
+| id | name  | primary_type | secondary_type |
++----+-------+--------------+----------------+
+| 45 | Eevee |            1 |           NULL |
++----+-------+--------------+----------------+
+
+# How many pokemon are there?
+select count(*) from pokemons;
++----------+
+| count(*) |
++----------+
+|      656 |
++----------+
+
+How many types are there?
+select count(*) from types;
+
++----------+
+| count(*) |
++----------+
+|       18 |
++----------+
+
+# How many pokemon have a secondary type?
+select * from pokemons where primary_type is not null and secondary_type is not null;
+
+316 rows in set 
+
+
+# What is each pokemon's primary type?
+select p.name as pokemon_name, t.name as type_name from pokemons p join types t on p.primary_type = t.id
